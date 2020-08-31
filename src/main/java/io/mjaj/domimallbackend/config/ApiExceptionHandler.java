@@ -1,10 +1,7 @@
 package io.mjaj.domimallbackend.config;
 
 import io.mjaj.domimallbackend.component.shared.model.ErrorMessage;
-import io.mjaj.domimallbackend.component.shared.web.exception.BadRequestException;
-import io.mjaj.domimallbackend.component.shared.web.exception.ConflictException;
-import io.mjaj.domimallbackend.component.shared.web.exception.ForbiddenException;
-import io.mjaj.domimallbackend.component.shared.web.exception.NotFoundException;
+import io.mjaj.domimallbackend.component.shared.web.exception.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -47,7 +44,8 @@ public class ApiExceptionHandler {
 
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler({
-            ConflictException.class
+            ConflictException.class,
+            FieldInvalidException.class
     })
     @ResponseBody
     public ErrorMessage conflict(HttpServletRequest request, Exception exception) {
