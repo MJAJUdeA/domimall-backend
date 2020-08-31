@@ -1,7 +1,15 @@
 package io.mjaj.domimallbackend.component.shared.model;
 
+import lombok.Data;
+import lombok.Generated;
+import lombok.Getter;
+import lombok.ToString;
+
 import java.time.LocalDateTime;
 
+@Generated
+@Getter
+@ToString
 public class ErrorMessage {
 
     private String exception;
@@ -10,6 +18,8 @@ public class ErrorMessage {
 
     private String path;
 
+    private LocalDateTime date;
+
     public ErrorMessage(Exception exception, String path){
         this.exception = exception.getClass().getName();
         this.message = exception.getMessage();
@@ -17,31 +27,4 @@ public class ErrorMessage {
         this.date = LocalDateTime.now();
     }
 
-    public String getException() {
-        return exception;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public LocalDateTime getDate() {
-        return date;
-    }
-
-    private LocalDateTime date;
-
-    @Override
-    public String toString() {
-        return "ErrorMessage{" +
-                "exception='" + exception + '\'' +
-                ", message='" + message + '\'' +
-                ", path='" + path + '\'' +
-                ", date=" + date +
-                '}';
-    }
 }
