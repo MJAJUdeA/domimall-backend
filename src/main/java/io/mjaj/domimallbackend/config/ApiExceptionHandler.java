@@ -12,13 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 
 @ControllerAdvice
 public class ApiExceptionHandler {
-
+    /*
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @ExceptionHandler({})
     @ResponseBody
     public void unauthorizedRequest() {
         //Empty. Nothing to do
     }
+    */
 
     @ResponseStatus(HttpStatus.NOT_FOUND)
     @ExceptionHandler({
@@ -45,7 +46,8 @@ public class ApiExceptionHandler {
     @ResponseStatus(HttpStatus.CONFLICT)
     @ExceptionHandler({
             ConflictException.class,
-            FieldInvalidException.class
+            FieldInvalidException.class,
+            org.springframework.dao.DataIntegrityViolationException.class
     })
     @ResponseBody
     public ErrorMessage conflict(HttpServletRequest request, Exception exception) {
