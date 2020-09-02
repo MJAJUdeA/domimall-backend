@@ -8,4 +8,6 @@ import javax.validation.constraints.NotNull;
 public interface CommerceService {
 
     Commerce create(@NotNull CommerceSaveCmd commerceToCreateCmd);
+
+    Commerce findById(@NotNull Long id);
 }

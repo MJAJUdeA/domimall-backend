@@ -11,8 +11,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.validation.constraints.NotNull;
 
 @Service
-@Transactional
 @RequiredArgsConstructor
+@Transactional
 public class CommerceServiceImpl implements CommerceService{
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
@@ -30,5 +30,17 @@ public class CommerceServiceImpl implements CommerceService{
         logger.debug("End create: commerceCreated = {}", commerceCreated);
 
         return commerceCreated;
+    }
+
+    @Override
+    @Transactional(readOnly = true)
+    public Commerce findById(@NotNull Long id) {
+        logger.debug("Begin findById: id = {}", id);
+
+        Commerce commerceFound = commerceGateway.findById(id);
+
+        logger.debug("End findById: commerceFound = {}", commerceFound);
+
+        return commerceFound;
     }
 }
