@@ -8,4 +8,6 @@ public interface CommerceGateway {
 
     Commerce save(@NotNull Commerce commerceToCreate);
 
+    Commerce findById(@NotNull Long id);
+
 }

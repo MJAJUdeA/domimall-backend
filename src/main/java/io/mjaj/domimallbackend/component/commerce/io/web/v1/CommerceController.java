@@ -1,6 +1,7 @@
 package io.mjaj.domimallbackend.component.commerce.io.web.v1;
 
 import io.mjaj.domimallbackend.component.commerce.io.web.v1.model.CommerceSaveRequest;
+import io.mjaj.domimallbackend.component.commerce.io.web.v1.model.CommerceSaveResponse;
 import io.mjaj.domimallbackend.component.commerce.model.Commerce;
 import io.mjaj.domimallbackend.component.commerce.service.CommerceService;
 import io.mjaj.domimallbackend.component.commerce.service.model.CommerceSaveCmd;
@@ -43,5 +44,16 @@ public class CommerceController {
         logger.debug("End create: commerceCreated = {}", commerceCreated);
 
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping(path = "/{id}")
+    public ResponseEntity<CommerceSaveResponse> findById(@Valid @PathVariable("id") @NotNull Long id ){
+        logger.debug("Begin findById: id = {}", id);
+
+        Commerce commerceFound = commerceService.findById(id);
+
+        logger.debug("End findById: commerceFound = {}", commerceFound);
+
+        return ResponseEntity.ok(CommerceSaveResponse.fromModel(commerceFound));
     }
 }

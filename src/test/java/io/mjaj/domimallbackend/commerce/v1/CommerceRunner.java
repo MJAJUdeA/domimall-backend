@@ -11,4 +11,9 @@ public class CommerceRunner {
     Karate testCreate(){
         return Karate.run("create").relativeTo(getClass());
     }
+
+    @Karate.Test
+    Karate testFindById(){
+        return Karate.run("findById").relativeTo(getClass());
+    }
 }
