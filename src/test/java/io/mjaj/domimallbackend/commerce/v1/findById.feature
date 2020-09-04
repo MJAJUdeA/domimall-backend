@@ -1,4 +1,4 @@
-Feature: Find a Commerce by id
+Feature: Find a commerce by id
 
   Background:
     * url baseUrl

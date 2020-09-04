@@ -1,4 +1,4 @@
-Feature: Create a Commerce
+Feature: Create a commerce
 
   Background:
     * url baseUrl
